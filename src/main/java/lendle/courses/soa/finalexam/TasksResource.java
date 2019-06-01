@@ -11,7 +11,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -19,7 +18,10 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 @Path("tasks")
 public class TasksResource {
-    @Autowired
+    /**
+     * question 4 (10%):
+     * add DI for taskService
+     */
     private TaskService taskService=null;
 
     public void setTaskService(TaskService taskService) {
@@ -29,14 +31,19 @@ public class TasksResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Task> getTasks(){
-        System.out.println("456");
         return taskService.getTasks();
     }
     
-    @GET
-    @Path("subject/{subject}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Task> getTasksBySubject(@PathParam("subject") String subject){
+    /*
+     * question 5 (10%):
+       implement a GET service
+       using sub path
+       subject/xxxxxx
+       
+       for example, webapi/tasks/subject/abc
+       should connect to this web service, and abc is the subject value
+     */
+    public List<Task> getTasksBySubject(String subject){
         return taskService.getTasksBySubject(subject);
     }
     
