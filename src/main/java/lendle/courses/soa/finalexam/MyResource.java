@@ -1,5 +1,6 @@
 package lendle.courses.soa.finalexam;
 
+import javax.lang.model.type.PrimitiveType;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -17,6 +18,9 @@ public class MyResource {
      *
      * @return String that will be returned as a text/plain response.
      */
+
+    
+
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String getIt() {
